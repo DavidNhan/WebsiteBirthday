@@ -67,7 +67,7 @@ const builders = {
         onclick: () => { startMusic(); go(index + 1); },
       })
     );
-    wrap.append(el("p", { className: "hint", textContent: "Tip: turn your sound on for the music." }));
+    wrap.append(el("p", { className: "hint", textContent: "Tip: turn your sound on, there is a song for you (button in the top right)." }));
   },
 
   text() {},
@@ -185,14 +185,14 @@ function startMusic() {
 }
 function setMusic(on) {
   musicBtn.setAttribute("aria-pressed", on);
-  musicBtn.textContent = on ? "♪ Music on" : "♪ Music";
+  musicBtn.textContent = on ? "🔊 Music on" : "🎵 Tap for music! 👉";
 }
 musicBtn.onclick = () => {
   if (song.paused) startMusic();
   else { song.pause(); setMusic(false); }
 };
 song.addEventListener("error", () => {
-  musicBtn.replaceWith(el("a", { className: "music", href: CONTENT.youtube, target: "_blank", rel: "noopener", textContent: "♪ Open on YouTube" }));
+  musicBtn.replaceWith(el("a", { className: "music", href: CONTENT.youtube, target: "_blank", rel: "noopener", textContent: "🎵 Open on YouTube" }));
 });
 
 // Gentle pastel confetti
