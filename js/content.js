@@ -30,11 +30,11 @@ const CONTENT = {
       text: "Tap a card.",
       cards: [
         "You make people feel welcome.",
-        "Your laugh lights up the room.",
+        "You care about people.",
         "You are stronger than you think.",
         "You are a real friend, always.",
         "You are bonita, inside and out.",
-        "The world is better with you in it.",
+        "You kick people's asses.",
       ],
     },
     {
@@ -77,14 +77,14 @@ const CONTENT = {
     },
     {
       type: "photos",
-      img: "capy-tea",
+      img: "capy-selfie",
       title: "Memories with you",
       text: "Moments we are happy to share with you.",
       photos: ["photo-1", "photo-2", "photo-3", "photo-4"],
     },
     {
       type: "cake",
-      img: "capy-party",
+      img: "capy-cake",
       title: "Make a wish",
       text: "Tap the candle, close your eyes and wish for something lovely.",
     },
