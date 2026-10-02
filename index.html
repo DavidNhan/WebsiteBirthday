@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Happy Birthday, Audrey!</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&family=Patrick+Hand&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="bg-float" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <div class="dots" id="dots" aria-hidden="true"></div>
+    <button id="musicBtn" class="music" aria-pressed="false" title="Play / pause music">♪ Music</button>
+  </header>
+
+  <main id="stage" aria-live="polite"></main>
+
+  <nav class="nav">
+    <button id="backBtn" class="btn ghost">← Back</button>
+    <button id="nextBtn" class="btn">Next →</button>
+  </nav>
+
+  <audio id="song" src="docs/song.mp3" loop preload="none"></audio>
+  <canvas id="confetti" aria-hidden="true"></canvas>
+
+  <script src="js/content.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
