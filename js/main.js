@@ -146,7 +146,7 @@ const builders = {
       const hoverText = s.photoHoverTexts?.[i] || "Memory with you";
       const img = picture(p, "photo-img", "Photo");
       const caption = el("div", { className: "photo-caption", textContent: hoverText });
-      grid.append(el("div", { className: "photo", title: hoverText }, img, caption));
+      grid.append(el("div", { className: "photo", title: hoverText, tabIndex: 0, ariaLabel: hoverText }, img, caption));
     });
     wrap.append(grid);
   },

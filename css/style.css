@@ -166,6 +166,19 @@ p { font-size: 1.15rem; line-height: 1.5; margin: 8px 0; }
   opacity: 1;
   transform: translateY(0);
 }
+.photo:focus .photo-caption,
+.photo:focus-within .photo-caption,
+.photo:active .photo-caption {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (hover: none), (pointer: coarse) {
+  .photo-caption {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 .cake { font-size: 5rem; margin: 10px 0; }
 .candle { cursor: pointer; background: none; border: 0; font-size: 5rem; }
