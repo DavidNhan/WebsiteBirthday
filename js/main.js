@@ -52,6 +52,7 @@ function go(i) {
 
 function render() {
   const s = scenes[index];
+  const isWelcome = s.type === "welcome";
   const wrap = el("section", { className: "scene" });
   if (s.img) wrap.append(picture(s.img, "capy", "Capy"));
   wrap.append(el("h1", { textContent: s.title }));
@@ -60,7 +61,8 @@ function render() {
   stage.replaceChildren(wrap);
   renderDots();
 
-  navEl.classList.toggle("hidden", s.type === "welcome");
+  navEl.classList.toggle("hidden", isWelcome);
+  navEl.style.display = isWelcome ? "none" : "flex";
   backBtn.disabled = index === 0;
   nextBtn.style.visibility = index === scenes.length - 1 ? "hidden" : "visible";
   window.scrollTo({ top: 0 });
