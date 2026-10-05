@@ -33,9 +33,9 @@ Goal: A cute, interactive click-through website that makes Audrey feel seen, war
 | 1 | Hosting | Free, reachable worldwide: GitHub Pages under the account **DavidNhan**. Flow: commit, push to a repo in that account, enable Pages. Expected link: `https://davidnhan.github.io/<repo-name>/`. Fallback: Netlify/Cloudflare Pages |
 | 2 | Language | English |
 | 3 | Personal details about Audrey | Loves karate; finds university tough (never mention directly, only encourage gently); likes to feel "bonita" (beautiful, confident) |
-| 4 | Song | "伯虎说 - Bo Hu Shuo", DJ version, via YouTube link: https://www.youtube.com/watch?v=EJmkQYLmH7A (video id `EJmkQYLmH7A`; playlist/index params dropped). Embedded with the YouTube IFrame Player API, started only by a visible play button (browsers block autoplay) |
+| 4 | Song | Local audio file `docs/song.mp3` is used in the site with a visible music toggle. If audio fails, the app shows a YouTube fallback link (`https://www.youtube.com/watch?v=EJmkQYLmH7A`). |
 | 5 | Gifts / coupons | No gifts, no coupons. Messages only |
-| 6 | Photos | Will follow later; use placeholders for now (group photos of all 6, individual photos) |
+| 6 | Photos | Implemented in `docs/` with exactly four gallery images: `IMG-20260710-WA0051.jpg`, `PXL_20260707_042445754.jpg`, `PXL_20260708_032807483.jpg`, `WhatsApp Image 2026-07-11 at 06.22.23.jpeg` |
 | 7 | Senders | Group of 6 including Audrey. Gift from 5: Henry, Kavita, Leila, Melina and David. Letter signed by all five |
 | 8 | Delivery | Link plus QR code (QR on a card or image; test that it works on phones) |
 
@@ -45,27 +45,35 @@ Goal: A cute, interactive click-through website that makes Audrey feel seen, war
 - Add "bonita" theme: a mirror/sparkle stop with confidence compliments ("You light up the room", "Bonita inside and out").
 - University: only indirect encouragement ("You are more than any grade", "One step at a time, Capy believes in you"). No exam or stress words.
 - Final letter has five signatures (one per friend), optionally one short line from each.
-- Photo placeholders: `assets/photos/placeholder-1..N`, easy swap by filename.
-- Music: use a hidden/small YouTube embed (no audio file hosted, no licensing issue on our side). Keep volume low, toggle visible, remember choice.
+- Photo list is now explicit in `js/content.js` (`scenes[].photos`) and loaded from `docs/`.
+- Music currently uses local `docs/song.mp3` with a fallback link to YouTube on load error.
 - Risks: the video may be blocked in some countries or disallow embedding; add a fallback "Open on YouTube" link and make the site fully work without music.
 - Hosting: repo must be public for free GitHub Pages; keep personal photos in mind (use only what the friends agree to publish) and avoid putting private details in the repo.
 
 ---
 
-## 3. Experience Flow (Click-Through Story)
+## 3. Experience Flow (Implemented)
 
-1. **Welcome screen**: "Hi Audrey! Capy has something for you." Big friendly button: "Open".
+1. **Welcome screen**: "Hi Audrey! Capy has something special for you." Big button: "Open your gift". Back/Next are hidden on this first screen.
 2. **Capy introduces itself**: speech bubble, "Today is your day. Come with me, no rush."
 3. **Stop 1 - The Warm Spring**: Capy relaxing in a hot spring. Message: "You are allowed to just be."
 4. **Stop 2 - Things Capy Loves About You**: click cards that flip to reveal 5-7 personal compliments.
-5. **Stop 3 - Capy's Cozy Corner**: pick-a-card (tea, blanket, snack) that reveals a small encouraging note or tiny coupon.
-6. **Stop 4 - Small Wins Garden**: click flowers; each one blooms with a "small thing that matters" message.
-7. **Stop 5 - Memory Lane** (optional): photos / shared memories with captions.
-8. **Stop 6 - Birthday Wish**: virtual cake, click to light the candle, make a wish, gentle confetti (pastel, slow).
-9. **Finale**: Capy and friends celebrate. Personal letter from the sender. Optional button: "Play a song for you".
-10. **After**: "Come back anytime" button that reopens a random kind message (lasting value beyond the birthday).
+5. **Stop 3 - Black belt in being you**: KIAI button rotates through supportive lines.
+6. **Stop 4 - Feeling bonita**: mirror tap cycles confidence messages.
+7. **Stop 5 - Capy's little garden**: click flowers to bloom supportive notes.
+8. **Stop 6 - Memories with you**: four-photo gallery loaded from `docs/`.
+9. **Stop 7 - Birthday Wish**: cake/candle interaction with gentle confetti.
+10. **Finale**: personal letter + random kind-message bubble + "Start again" button.
 
-Navigation: always a gentle "next" and "back". Progress shown as little footprints or dots, never as a score.
+Navigation: "next" and "back" are shown after the welcome screen. Progress uses top dots.
+
+---
+
+## 3.1 Current Scene Data Source
+
+- All editable scene text is centralized in `js/content.js` under `const CONTENT`.
+- Rendering and interaction logic are in `js/main.js`.
+- Static shell and script/style includes are in `index.html`.
 
 ---
 
@@ -76,7 +84,7 @@ Navigation: always a gentle "next" and "back". Progress shown as little footprin
 - Responsive, mobile-first (she will most likely open it on a phone).
 - Accessibility: readable contrast, `prefers-reduced-motion` respected, alt texts, keyboard friendly.
 
-### Planned File Structure
+### Current File Structure
 
 ```
 WebsiteBirthday/
@@ -85,13 +93,12 @@ WebsiteBirthday/
   css/
     style.css
   js/
-    main.js          # scene flow, click handlers
-    content.js       # all texts in one place (easy to edit)
-  assets/
-    capybara/        # guide images
-    photos/          # personal photos
-    audio/           # optional music
-  README.md          # how to deploy (only if needed)
+    main.js          # scene flow, click handlers, interactions
+    content.js       # all scene copy and photo filenames
+  docs/
+    capy-*.png       # capy scene images
+    *.jpg/*.jpeg     # memory photos
+    song.mp3         # optional local music track
 ```
 
 ---
@@ -160,33 +167,34 @@ Legend: `[ ]` open, `[~]` in progress, `[x]` done. **Update this list after ever
 - [ ] Check the YouTube video embeds correctly and works worldwide
 
 ### Phase 1 - Assets
-- [ ] Choose capybara image style
-- [ ] Collect/create 8-12 capybara images
+- [x] Choose capybara image style
+- [x] Collect/create capybara scene images in `docs/`
 - [ ] Prepare optimized images (WebP/PNG, < 300 KB each)
-- [ ] Select fonts and color palette
-- [ ] Collect photos (optional) and music (optional)
+- [x] Select fonts and color palette
+- [x] Collect photos and music in `docs/`
 - [ ] Fill credits log
 
 ### Phase 2 - Content
-- [ ] Write all texts in German/English (content.js)
-- [ ] Write 5-7 personal compliments
-- [ ] Write small-win messages
-- [ ] Write final personal letter
-- [ ] Read everything once more for tone (no depression references, no pressure)
+- [x] Write all texts in English (`js/content.js`)
+- [x] Write 5-7 personal compliments
+- [x] Write small-win messages
+- [x] Write final personal letter
+- [x] Read for tone (no depression references, no pressure)
 
 ### Phase 3 - Build
-- [ ] Project skeleton (index.html, css, js)
-- [ ] Scene engine (next/back, transitions)
-- [ ] Welcome screen + Capy intro
-- [ ] Stop 1 - Warm Spring
-- [ ] Stop 2 - Flip cards
-- [ ] Stop 3 - Cozy Corner
-- [ ] Stop 4 - Small Wins Garden
-- [ ] Stop 5 - Memory Lane (optional)
-- [ ] Stop 6 - Cake and wish + gentle confetti
-- [ ] Finale + letter
-- [ ] "Come back anytime" random kind message
-- [ ] Audio toggle (off by default)
+- [x] Project skeleton (index.html, css, js)
+- [x] Scene engine (next/back, transitions)
+- [x] Welcome screen + Capy intro
+- [x] Stop 1 - Warm Spring
+- [x] Stop 2 - Flip cards
+- [x] Stop 3 - Karate KIAI interaction
+- [x] Stop 4 - Mirror/bonita interaction
+- [x] Stop 5 - Small Wins Garden
+- [x] Stop 6 - Memory gallery
+- [x] Stop 7 - Cake and wish + gentle confetti
+- [x] Finale + letter
+- [x] Random kind-message bubble in finale
+- [x] Audio toggle
 
 ### Phase 4 - Polish and QA
 - [ ] Mobile test (iPhone/Android sizes)
@@ -197,8 +205,9 @@ Legend: `[ ]` open, `[~]` in progress, `[x]` done. **Update this list after ever
 - [ ] Test with one trusted person (not Audrey)
 
 ### Phase 5 - Launch
-- [ ] Commit and push to GitHub `DavidNhan`, enable GitHub Pages
-- [ ] Deploy to hosting
+- [x] Commit and push to GitHub `DavidNhan`
+- [ ] Enable/verify GitHub Pages
+- [ ] Deploy/verify hosting URL
 - [ ] Test the live link on phone
 - [ ] Create QR code / card (optional)
 - [ ] Schedule delivery for **21 October** (message at a good time of day, not too early)
@@ -240,3 +249,4 @@ Legend: `[ ]` open, `[~]` in progress, `[x]` done. **Update this list after ever
 | 2026-10-02 | Created Ultraplan |
 | 2026-10-02 | Hosting set to GitHub `DavidNhan` (commit, push, Pages); song switched to YouTube embed (EJmkQYLmH7A) |
 | 2026-10-02 | Answered section 2: English, GitHub Pages, karate/bonita themes, Bo Hu Shuo DJ song, no gifts, photo placeholders, five senders, link + QR |
+| 2026-10-05 | Synced plan with current repo: local `docs/song.mp3` + YouTube fallback, exact 4-photo gallery, implemented scene flow, welcome screen starts with only "Open your gift" |

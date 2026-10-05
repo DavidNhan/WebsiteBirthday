@@ -142,9 +142,11 @@ const builders = {
 
   photos(wrap, s) {
     const grid = el("div", { className: "photos" });
-    s.photos.forEach((p) => {
+    s.photos.forEach((p, i) => {
+      const hoverText = s.photoHoverTexts?.[i] || "Memory with you";
       const img = picture(p, "photo-img", "Photo");
-      grid.append(el("div", { className: "photo" }, img));
+      const caption = el("div", { className: "photo-caption", textContent: hoverText });
+      grid.append(el("div", { className: "photo", title: hoverText }, img, caption));
     });
     wrap.append(grid);
   },

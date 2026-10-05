@@ -34,7 +34,7 @@ const CONTENT = {
         "You are stronger than you think.",
         "You are a real friend, always.",
         "You are bonita, inside and out.",
-        "You kick people's asses.",
+        "You kick people's asses (quite literally).",
       ],
     },
     {
@@ -45,9 +45,9 @@ const CONTENT = {
       shout: "KIAI!",
       lines: [
         "Every step forward counts, even the tiny ones.",
-        "You have discipline, courage and heart.",
-        "One step at a time. Capy believes in you.",
-        "You are more than any grade or result.",
+        "You have empathy, insane drawing skills and a big heart.",
+        "Take it easy. Capy believes in you.",
+        "Punch the negative energy away.",
       ],
     },
     {
@@ -57,9 +57,9 @@ const CONTENT = {
       text: "Tap the mirror.",
       lines: [
         "You look amazing, and it is not just the outfit.",
-        "Your kindness is the prettiest thing about you.",
+        "Your kindness is the best thing about you (and so much more).",
         "Confidence looks great on you.",
-        "Bonita, always.",
+        "You feel bonita, always.",
       ],
     },
     {
@@ -72,7 +72,7 @@ const CONTENT = {
         ["🌼", "Slow days are still good days."],
         ["🌷", "Rest is part of the plan."],
         ["🌻", "You bring sunshine to others."],
-        ["🪻", "We are proud of you."],
+        ["🪻", "We are proud of you for who you are."],
       ],
     },
     {
@@ -85,6 +85,12 @@ const CONTENT = {
         "PXL_20260707_042445754.jpg",
         "PXL_20260708_032807483.jpg",
         "WhatsApp Image 2026-07-11 at 06.22.23.jpeg",
+      ],
+      photoHoverTexts: [
+        "Mmmmh, jiaozi.",
+        "So much meat, wowie.",
+        "Spicy, but delicious.",
+        "More jiaozi... how many times where we there again?",
       ],
     },
     {
