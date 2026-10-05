@@ -80,7 +80,12 @@ const CONTENT = {
       img: "capy-selfie",
       title: "Memories with you",
       text: "Moments we are happy to share with you.",
-      photos: ["photo-1", "photo-2", "photo-3", "photo-4"],
+      photos: [
+        "IMG-20260710-WA0051.jpg",
+        "PXL_20260708_032807483.jpg",
+        "WhatsApp Image 2026-07-11 at 06.22.23.jpeg",
+        "Niedliche Capybara-Stickerparty in Pastell.png",
+      ],
     },
     {
       type: "cake",

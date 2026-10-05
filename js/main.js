@@ -17,17 +17,25 @@ function el(tag, props = {}, ...kids) {
   return e;
 }
 
+function imageCandidates(name) {
+  const hasExt = /\.[a-z0-9]+$/i.test(name);
+  if (hasExt) return [name];
+  return [`${name}.png`, `${name}.jpg`, `${name}.jpeg`, `${name}.webp`];
+}
+
 // Show image from docs/, fall back to a placeholder box until the file exists.
 function picture(name, cls, label) {
-  const img = el("img", { className: cls, alt: "Capy the capybara", src: `docs/${name}.png` });
+  const files = imageCandidates(name);
+  const img = el("img", { className: cls, alt: "Capy the capybara", src: `docs/${files[0]}` });
+  let pos = 0;
   img.onerror = () => {
-    if (img.dataset.tried !== "jpg") {
-      img.dataset.tried = "jpg";
-      img.src = `docs/${name}.jpg`;
+    pos += 1;
+    if (pos < files.length) {
+      img.src = `docs/${files[pos]}`;
       return;
     }
     const ph = el("div", { className: cls === "capy" ? "capy-ph" : "photo" });
-    ph.innerHTML = `<div><b>🐹</b>${label || name}<br><small>docs/${name}.png</small></div>`;
+    ph.innerHTML = `<div><b>🐹</b>${label || name}<br><small>docs/${files[0]}</small></div>`;
     img.replaceWith(ph);
   };
   return img;
@@ -134,12 +142,7 @@ const builders = {
     const grid = el("div", { className: "photos" });
     s.photos.forEach((p) => {
       const img = picture(p, "photo-img", "Photo");
-      const box = el("div", { className: "photo" }, img);
-      img.onerror = () => {
-        if (img.dataset.tried !== "jpg") { img.dataset.tried = "jpg"; img.src = `docs/${p}.jpg`; return; }
-        box.innerHTML = `<div><b>📷</b>Photo coming soon<br><small>docs/${p}.jpg</small></div>`;
-      };
-      grid.append(box);
+      grid.append(el("div", { className: "photo" }, img));
     });
     wrap.append(grid);
   },
