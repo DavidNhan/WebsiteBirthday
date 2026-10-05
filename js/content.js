@@ -84,7 +84,6 @@ const CONTENT = {
         "IMG-20260710-WA0051.jpg",
         "PXL_20260708_032807483.jpg",
         "WhatsApp Image 2026-07-11 at 06.22.23.jpeg",
-        "Niedliche Capybara-Stickerparty in Pastell.png",
         "PXL_20260707_042445754.jpg",
       ],
     },
