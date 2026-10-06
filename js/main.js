@@ -5,6 +5,9 @@ const nextBtn = document.getElementById("nextBtn");
 const navEl = document.querySelector(".nav");
 const song = document.getElementById("song");
 const musicBtn = document.getElementById("musicBtn");
+const volumeEl = document.getElementById("volume");
+song.volume = volumeEl.value / 100;
+volumeEl.oninput = () => { song.volume = volumeEl.value / 100; };
 
 const scenes = CONTENT.scenes;
 let index = 0;
@@ -187,7 +190,7 @@ const builders = {
 
 // Music
 function startMusic() {
-  song.volume = 0.4;
+  song.volume = volumeEl.value / 100;
   song.play().then(() => setMusic(true)).catch(() => setMusic(false));
 }
 function setMusic(on) {

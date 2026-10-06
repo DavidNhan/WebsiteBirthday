@@ -14,7 +14,10 @@
 
   <header class="topbar">
     <div class="dots" id="dots" aria-hidden="true"></div>
-    <button id="musicBtn" class="music" aria-pressed="false" title="Play / pause music">🎵 Tap for music! 👉</button>
+    <div class="audio">
+      <input id="volume" type="range" min="0" max="100" value="40" aria-label="Volume" title="Volume">
+      <button id="musicBtn" class="music" aria-pressed="false" title="Play / pause music">🎵 Tap for music! 👉</button>
+    </div>
   </header>
 
   <main id="stage" aria-live="polite"></main>

@@ -15,7 +15,7 @@ html, body { margin: 0; height: 100%; }
 body {
   font-family: "Nunito", system-ui, sans-serif;
   color: var(--ink);
-  background: linear-gradient(160deg, var(--cream), var(--pink) 55%, var(--sky));
+  background: linear-gradient(160deg, #eaf6ff, #bde0fe 50%, #8ec5fc);
   display: flex;
   flex-direction: column;
   min-height: 100dvh;
@@ -38,8 +38,11 @@ body {
 }
 
 .dots { display: flex; gap: 6px; }
-.dots span { width: 10px; height: 10px; border-radius: 50%; background: #fff9; transition: all .3s; }
-.dots span.on { background: var(--brown); transform: scale(1.3); }
+.dots span { width: 10px; height: 10px; border-radius: 50%; background: #fffa; transition: all .3s; }
+.dots span.on { background: #3d7ab8; transform: scale(1.3); }
+
+.audio { display: flex; align-items: center; gap: 10px; }
+#volume { width: 90px; accent-color: #3d7ab8; cursor: pointer; }
 
 .music {
   font: inherit; font-weight: 800; font-size: 1.1rem; color: var(--ink);

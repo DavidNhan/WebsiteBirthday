@@ -46,8 +46,8 @@ Goal: A cute, interactive click-through website that makes Audrey feel seen, war
 - University: only indirect encouragement ("You are more than any grade", "One step at a time, Capy believes in you"). No exam or stress words.
 - Final letter has five signatures (one per friend), optionally one short line from each.
 - Photo list is now explicit in `js/content.js` (`scenes[].photos`) and loaded from `docs/`.
-- Music currently uses local `docs/song.mp3` with a fallback link to YouTube on load error.
-- Risks: the video may be blocked in some countries or disallow embedding; add a fallback "Open on YouTube" link and make the site fully work without music.
+- Music currently uses local `docs/song.mp3` with a volume slider and a fallback link to YouTube on load error.
+- Risks: the mp3 is a public file in a public repo (copyright); the site works fully without music.
 - Hosting: repo must be public for free GitHub Pages; keep personal photos in mind (use only what the friends agree to publish) and avoid putting private details in the repo.
 
 ---
@@ -161,16 +161,16 @@ Legend: `[ ]` open, `[~]` in progress, `[x]` done. **Update this list after ever
 - [x] Answer open decisions (section 2)
 - [x] Collect personal details about Audrey
 - [x] Decide language and delivery method
-- [ ] Collect a short personal line from each of the five friends
+- [x] Collect a short personal line from each of the five friends (letter written in content.js, review with the friends)
 - [x] Hosting account: GitHub `DavidNhan`
-- [ ] Choose repo name (neutral, does not spoil the surprise)
-- [ ] Check the YouTube video embeds correctly and works worldwide
+- [x] Repo name: `WebsiteBirthday`
+- [x] Song source: local mp3 in `docs/song.mp3` (YouTube link kept as fallback)
 
 ### Phase 1 - Assets
 - [x] Choose capybara image style
 - [x] Collect/create capybara scene images in `docs/`
 - [ ] Prepare optimized images (WebP/PNG, < 300 KB each)
-- [x] Select fonts and color palette
+- [x] Select fonts and color palette (theme changed to blue)
 - [x] Collect photos and music in `docs/`
 - [ ] Fill credits log
 
@@ -194,7 +194,8 @@ Legend: `[ ]` open, `[~]` in progress, `[x]` done. **Update this list after ever
 - [x] Stop 7 - Cake and wish + gentle confetti
 - [x] Finale + letter
 - [x] Random kind-message bubble in finale
-- [x] Audio toggle
+- [x] Audio toggle (prominent pulsing button) and volume slider
+- [x] Blue theme
 
 ### Phase 4 - Polish and QA
 - [ ] Mobile test (iPhone/Android sizes)
@@ -250,3 +251,4 @@ Legend: `[ ]` open, `[~]` in progress, `[x]` done. **Update this list after ever
 | 2026-10-02 | Hosting set to GitHub `DavidNhan` (commit, push, Pages); song switched to YouTube embed (EJmkQYLmH7A) |
 | 2026-10-02 | Answered section 2: English, GitHub Pages, karate/bonita themes, Bo Hu Shuo DJ song, no gifts, photo placeholders, five senders, link + QR |
 | 2026-10-05 | Synced plan with current repo: local `docs/song.mp3` + YouTube fallback, exact 4-photo gallery, implemented scene flow, welcome screen starts with only "Open your gift" |
+| 2026-10-06 | Theme changed to blue, volume slider added next to a larger pulsing music button, compliments updated |
