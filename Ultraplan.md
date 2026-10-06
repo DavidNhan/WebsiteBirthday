@@ -163,7 +163,7 @@ Legend: `[ ]` open, `[~]` in progress, `[x]` done. **Update this list after ever
 - [x] Decide language and delivery method
 - [x] Collect a short personal line from each of the five friends (letter written in content.js, review with the friends)
 - [x] Hosting account: GitHub `DavidNhan`
-- [x] Repo name: `WebsiteBirthday`
+- [x] Repo name: `WebsiteForAudrey`
 - [x] Song source: local mp3 in `docs/song.mp3` (YouTube link kept as fallback)
 
 ### Phase 1 - Assets
